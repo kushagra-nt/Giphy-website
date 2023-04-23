@@ -6,7 +6,7 @@ import { searchResults } from "../../Fetch";
 const Navbar = ({ isLoggedIn, setGifs, searchText, setSearchText }) => {
   const handleSearch = async (e) => {
     e.preventDefault();
-    if (e.key == "Enter") {
+    if (e.key == "Enter" && isLoggedIn) {
       await searchResults(setGifs, searchText, 0);
     }
   };
