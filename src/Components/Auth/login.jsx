@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import auth from "./firebase-config";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ user, setUser }) => {
+const Login = () => {
   const [loginForm, setLoginForm] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +17,6 @@ const Login = ({ user, setUser }) => {
       //login
       try {
         const currentUser = await signInWithEmailAndPassword(auth, email, password);
-        // setUser(currentUser);
         navigate("/");
       } catch (err) {
         setErrorMessage("failed to login");
@@ -27,7 +26,6 @@ const Login = ({ user, setUser }) => {
       // sign in
       try {
         const currentUser = await createUserWithEmailAndPassword(auth, email, password);
-        setUser(currentUser);
         navigate("/");
       } catch (err) {
         setErrorMessage("failed to signin");
